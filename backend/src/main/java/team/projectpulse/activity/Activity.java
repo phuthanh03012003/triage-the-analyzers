@@ -37,6 +37,7 @@ public class Activity {
 
 
     public Activity() {
+        // Required by JPA to instantiate persisted entities.
     }
 
     public Activity(Student student, String week, Team team, ActivityCategory category, String activity, String description, Double plannedHours, Double actualHours, ActivityStatus status) {

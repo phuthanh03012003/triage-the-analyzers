@@ -4,7 +4,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Locale;
 
-public class TeamSpecs {
+public final class TeamSpecs {
 
     private TeamSpecs() {
         // Static query specifications; this class is not instantiated.

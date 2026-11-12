@@ -7,6 +7,7 @@ public class RatingAverage {
 
 
     public RatingAverage() {
+        // Report aggregation populates this object through setters.
     }
 
     public RatingAverage(Integer criterionId, Double averageScore) {

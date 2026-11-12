@@ -29,6 +29,7 @@ public class UseCaseMainStep {
 
     
     public UseCaseMainStep() {
+        // Required by JPA to instantiate persisted entities.
 
     }
 

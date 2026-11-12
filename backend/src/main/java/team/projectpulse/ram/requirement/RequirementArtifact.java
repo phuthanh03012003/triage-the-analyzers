@@ -78,6 +78,7 @@ public class RequirementArtifact {
 
 
     public RequirementArtifact() {
+        // Required by JPA to instantiate persisted entities.
 
     }
 
@@ -110,13 +111,17 @@ public class RequirementArtifact {
     }
 
     public void addCommentThread(CommentThread thread) {
-        if (thread == null) return;
+        if (thread == null) {
+            return;
+        }
         this.commentThreads.add(thread);
         thread.setArtifact(this);
     }
 
     public void removeCommentThread(CommentThread thread) {
-        if (thread == null) return;
+        if (thread == null) {
+            return;
+        }
         this.commentThreads.remove(thread);
         if (thread.getArtifact() == this) {
             thread.setArtifact(null);

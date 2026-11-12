@@ -22,6 +22,7 @@ public class Criterion {
 
 
     public Criterion() {
+        // Required by JPA to instantiate persisted entities.
     }
 
     public Criterion(String criterion, String description, Double maxScore) {

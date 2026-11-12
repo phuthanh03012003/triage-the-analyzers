@@ -2,7 +2,7 @@ package team.projectpulse.activity;
 
 import org.springframework.data.jpa.domain.Specification;
 
-public class ActivitySpecs {
+public final class ActivitySpecs {
 
     private ActivitySpecs() {
         // Static query specifications; this class is not instantiated.
