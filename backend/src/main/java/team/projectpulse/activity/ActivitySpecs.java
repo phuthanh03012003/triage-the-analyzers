@@ -4,6 +4,10 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class ActivitySpecs {
 
+    private ActivitySpecs() {
+        // Static query specifications; this class is not instantiated.
+    }
+
     public static Specification<Activity> hasWeek(String providedWeek) {
         return (root, query, criteriaBuilder) ->
                 criteriaBuilder.equal(root.get("week"), providedWeek);
