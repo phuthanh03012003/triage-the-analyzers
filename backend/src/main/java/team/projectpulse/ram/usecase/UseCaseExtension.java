@@ -56,6 +56,7 @@ public class UseCaseExtension {
 
 
     public UseCaseExtension() {
+        // Required by JPA to instantiate persisted entities.
 
     }
 

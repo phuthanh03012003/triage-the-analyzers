@@ -16,6 +16,7 @@ public class Result {
 
 
     public Result() {
+        // Required by Jackson to deserialize the API response envelope.
     }
 
     public Result(boolean flag, Integer code, String message) {

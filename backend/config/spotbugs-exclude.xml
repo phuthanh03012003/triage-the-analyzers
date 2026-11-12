@@ -7,4 +7,14 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+    <!-- Project Pulse deliberately shares mutable JPA associations, Spring collaborators,
+         and application transport/template objects. TeamService.transferTeam updates
+         associations through getters; defensive copies there would discard updates.
+         Transport objects have no immutable-Java-API contract. Aliasing remains an
+         accepted design risk (e.g. PeerEvaluation ratings/totalScore consistency),
+         to address through aggregate APIs rather than blanket defensive copies. -->
+    <Match>
+        <Package name="~team\.projectpulse\..*"/>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
 </FindBugsFilter>
