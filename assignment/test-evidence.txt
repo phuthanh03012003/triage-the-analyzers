@@ -1,0 +1,33 @@
+Slice 3 regression-test evidence
+Java: Eclipse Temurin 21.0.8; Maven wrapper supplied by the project.
+
+RED — source commit ac5e979 (test committed before the fix)
+From backend/: ./mvnw --batch-mode -ntp -Dtest=TeamSpecsTest test
+[ERROR] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.605 s <<< FAILURE! -- in team.projectpulse.team.TeamSpecsTest
+[ERROR] team.projectpulse.team.TeamSpecsTest.teamNameSearchUsesTheSamePatternUnderEnglishAndTurkishLocales -- Time elapsed: 0.594 s <<< FAILURE!
+[ERROR] team.projectpulse.team.TeamSpecsTest.sectionNameSearchUsesTheSameValueUnderEnglishAndTurkishLocales -- Time elapsed: 0.003 s <<< FAILURE!
+[ERROR] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE
+
+Both tests expected the same Criteria API argument twice, once per default locale.
+Before the fix, Mockito found it only once; English passed and Turkish differed.
+
+GREEN — source commit 04824f8 (Locale.ROOT fix)
+From backend/: ./mvnw --batch-mode -ntp -Dtest=TeamSpecsTest,ActivitySecurityServiceTest,TeamSecurityServiceTest test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.549 s -- in team.projectpulse.activity.ActivitySecurityServiceTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s -- in team.projectpulse.team.TeamSecurityServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.114 s -- in team.projectpulse.team.TeamSpecsTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+
+The test restores the previous default locale in finally.
+The original wrapper was not executable; 8eec00e fixes its mode. Use sh ./mvnw on earlier commits.
+
+FINAL BACKEND GATE — source/configuration from 8eec00e
+From backend/: ./mvnw --batch-mode -ntp verify
+[INFO] Tests run: 441, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  05:36 min
+SpotBugs and PMD check goals both passed in this verify run.
+Unfiltered scratch reports: SpotBugs 237 -> 18; PMD 130 -> 51.
+No new analyzer file/rule findings; both baseline entry sets only shrank.
