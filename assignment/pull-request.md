@@ -1,9 +1,9 @@
-<!-- Replace ISSUE_NUMBER after publishing assignment/issue.md in this fork.
+<!-- Published issue: https://github.com/phuthanh03012003/triage-the-analyzers/issues/1.
      PR title: Triage slice 3: teams and activities
      Base repository: phuthanh03012003/triage-the-analyzers; base branch: main.
      Head branch: triage-slice-3. Leave the PR open; do not merge. -->
 
-Closes #ISSUE_NUMBER
+Closes #1
 Slice: 3 — Teams and activities
 Traces to: none: config
 
@@ -60,4 +60,5 @@ The agent avoided blanket defensive copies, which would discard intentional asso
 - **Verified:** initial analyzer gate passed; both locale regressions failed before the fix and passed afterward; 12 focused search/authorization tests passed; unfiltered reports confirmed 18 remaining SpotBugs and 51 remaining PMD findings; baseline-subset checks and `git diff --check` passed.
 - **Full backend gate:** Java 21 `./mvnw --batch-mode -ntp verify` passed with **441 tests, zero failures, zero errors, zero skipped**, followed by successful SpotBugs and PMD checks. Docker Desktop supplied the MySQL integration-test container. The first attempt was blocked by the stopped Docker daemon; it passed after Docker started.
 - **Frontend report-only checks (local Node 25.6.1):** `npm ci` passed; ESLint reported 130 problems (128 errors, two warnings); `vue-tsc` reported 18 errors; Prettier reported six files. No frontend source was changed.
-- **Not verified:** GitHub PR checks and repository Issues/Actions settings until the issue/PR are published; interactive browser behavior; database-collation equivalence for every Unicode character.
+- **GitHub:** Issues is enabled and issue #1 is published. Repository-level Actions permission is enabled; see the PR's live checks for CI results. This file records local verification before PR publication.
+- **Not verified:** interactive browser behavior; database-collation equivalence for every Unicode character.
